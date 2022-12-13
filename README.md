@@ -2,6 +2,7 @@
 
 Código para enviar uma mensagem especifica um n número de vezes, para qualquer
 conversa no whatsapp web.
+Fork no repositório [do Matt-Fontes](https://github.com/Matt-Fontes/SendScriptWhatsApp)
 
 ## Utilização
 Abra o arquivo script.js
