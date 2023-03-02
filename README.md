@@ -5,6 +5,7 @@ conversa no whatsapp web.
 Fork no repositório [do Matt-Fontes](https://github.com/Matt-Fontes/SendScriptWhatsApp)
 
 ## Utilização
+
 Abra o arquivo script.js
 
 Copie todo o conteúdo (clique em raw -> ctrl+a -> ctrl+c)

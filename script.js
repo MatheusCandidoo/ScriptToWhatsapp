@@ -9,24 +9,38 @@ function textareaDontExists() {
     if (!textarea) throw new Error("Não há uma conversa aberta")
 }
 
-async function sendMessages(message, counter) {
+async function prepareMessage(message, quantityBlock, quantityIntervals) {
+    var count = 0;
     textarea = identifyTextArea();
 
     textareaDontExists();
 
-    for (var i = 0; i < counter; i++) {
+    for (var j = 0; j < quantityIntervals; j++) {
 
-        setMessagOnTextarea(`${message} ${i + 1}`);
+        for (var i = 0; i < quantityBlock; i < i++) {
+            setMessagOnTextarea(`${message} X ${count + 1}`);
 
-        clickSendButton()
+            await clickSendButton()
 
-        if (i !== counter)
-            await new Promise(resolve => setTimeout(resolve, 250));
+            if (i !== quantityBlock)
+                await new Promise(resolve => setTimeout(resolve, 250));
+
+            count++;
+        }
+        await new Promise(resolve => setTimeout(resolve, 7200000));
     }
-    return counter;
+
+    return count;
 }
 
-function clickSendButton() {
+function call(quantityBlock, message) {
+    setTimeout(sendMessages(quantityBlock, message), 3000)
+}
+
+
+
+
+async function clickSendButton() {
     setTimeout(() => {
         (main.querySelector(`[data-testid="send"]`) || main.querySelector(`[data-icon="send"]`)).click();
     }, 100);
@@ -40,11 +54,14 @@ function setMessagOnTextarea(line) {
     textarea.dispatchEvent(new Event('change', { bubbles: true }));
 }
 
-function start() {
+async function start() {
     var message = prompt('Digite a mensagem a ser enviada', '');
-    var counter = parseInt(prompt('Digite o numero de repetições', 10));
+    var quantityBlock = parseInt(prompt('Digite a quantidade de mensagens a ser enviada no bloco de mensagens', 10));
+    var quantityIntervals = parseInt(prompt('Digite a quantidade de vezes que um bloco será enviado: ', ''))
 
-    sendMessages(message, counter).then(e => console.log(`Código finalizado, ${e} mensagens enviadas`)).catch(console.error);
+    prepareMessage(message, quantityBlock, quantityIntervals)
+        .then(e => console.log(`Código finalizado, ${e} mensagens enviadas`)).
+        catch(console.error);
 }
 
 start();
