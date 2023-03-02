@@ -44,7 +44,7 @@ function start() {
     var message = prompt('Digite a mensagem a ser enviada', '');
     var counter = parseInt(prompt('Digite o numero de repetições', 10));
 
-    enviarMensagems(message, counter).then(e => console.log(`Código finalizado, ${e} mensagens enviadas`)).catch(console.error);
+    sendMessages(message, counter).then(e => console.log(`Código finalizado, ${e} mensagens enviadas`)).catch(console.error);
 }
 
 start();
